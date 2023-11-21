@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@@/*": ["./.umi/*"]
+    }
+  },
+  "include": [
+    "./components/**/*.d.ts",
+    "./components/**/*.ts",
+    "./components/**/*.tsx",
+    "./utils/**/*.d.ts",
+    "./utils/**/*.ts",
+    "./utils/**/*.tsx",
+    "./hooks/**/*.d.ts",
+    "./hooks/**/*.ts",
+    "./hooks/**/*.tsx"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  // Set eslint as the default formatter
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": false,
+
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  // Auto format json files via prettier
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // The following is optional.
+  // It's better to put under project setting `.vscode/settings.json`
+  // to avoid conflicts with working with different eslint configs
+  // that does not support all formats.
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html"
+  ],
+
+  // get rid of the “Unknown at rule @tailwind” warning
+  "css.customData": ["./.vscode/tailwind.json"]
+}
