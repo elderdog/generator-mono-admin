@@ -100,6 +100,7 @@ module.exports = class extends Generator {
     this.log('\nWriting...\n')
     // 拷贝文件
     this.fs.copy(this.templatePath('.editorconfig'), this.destinationPath('.editorconfig'))
+    this.fs.copy(this.templatePath('.env'), this.destinationPath('.env'))
     this.fs.copy(this.templatePath('.eslintrc.js'), this.destinationPath('.eslintrc.js'))
     this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'))
     this.fs.copy(this.templatePath('.umirc.ts'), this.destinationPath('.umirc.ts'))
