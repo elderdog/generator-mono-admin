@@ -18,3 +18,9 @@ declare module 'react-fittext';
 declare module 'bizcharts-plugin-slider';
 
 declare const REACT_APP_ENV: 'test' | 'dev' | 'pre' | false
+
+// 环境变量
+declare const UMI_APP_TITLE: string
+declare const UMI_APP_BASE_API: string
+declare const UMI_APP_BASE: string
+declare const UMI_APP_PUBLIC_PATH: string
