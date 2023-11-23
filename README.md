@@ -1,5 +1,7 @@
 # generator-mono-admin
 
+Yeoman generator for a monorepo project which contains an `Ant Design Pro` app inside.
+
 ```shell
      _-----_
     |       |    ╭──────────────────────────╮
@@ -11,8 +13,6 @@
    __'.___.'__
  ´   `  |° ´ Y `
 ```
-
-Yeoman generator for a monorepo project which contains an `Ant Design Pro` app inside.
 
 ## Installation
 
