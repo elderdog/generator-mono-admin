@@ -1,5 +1,6 @@
 // ～/generators/app/index.js
 'use strict'
+const pkg = require('../../package.json')
 const Generator = require('yeoman-generator')
 const chalk = require('chalk')
 const yosay = require('yosay')
@@ -13,7 +14,7 @@ module.exports = class extends Generator {
   // 向用户展示交互式问题收集关键参数
   prompting() {
     // Have Yeoman greet the user.
-    this.log(yosay(`Welcome to the stunning ${chalk.red('mono-admin')} generator!`))
+    this.log(yosay(`Welcome to the stunning ${chalk.red('mono-admin@' + pkg.version)} generator!`))
 
     const nameQuestions = [
       {
@@ -101,7 +102,6 @@ module.exports = class extends Generator {
     // 拷贝文件
     // 命名.开头的文件在npm pack时可能会被忽略，所以在模板中把文件名的.去掉，拷贝时重命名
     this.fs.copy(this.templatePath('editorconfig'), this.destinationPath('.editorconfig'))
-    this.fs.copy(this.templatePath('env'), this.destinationPath('.env'))
     this.fs.copy(this.templatePath('eslintrc.js'), this.destinationPath('.eslintrc.js'))
     this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'))
     this.fs.copy(this.templatePath('umirc.ts'), this.destinationPath('.umirc.ts'))
@@ -116,6 +116,7 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath('utils'), this.destinationPath('utils'))
     this.fs.copy(this.templatePath('packages'), this.destinationPath('packages'))
     // packages下命名.开头的文件重命名
+    this.fs.move(this.destinationPath('packages/admin/env'), this.destinationPath('packages/admin/.env'))
     this.fs.move(this.destinationPath('packages/admin/eslintignore'), this.destinationPath('packages/admin/.eslintignore'))
     this.fs.move(this.destinationPath('packages/admin/eslintrc.js'), this.destinationPath('packages/admin/.eslintrc.js'))
     this.fs.move(this.destinationPath('packages/admin/gitignore'), this.destinationPath('packages/admin/.gitignore'))

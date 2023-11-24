@@ -4,15 +4,16 @@ import { join } from 'path'
 import defaultSettings from './defaultSettings'
 import routes from './routes'
 
-const withPublicPath = (path: string): string => join(process.env.UMI_APP_PUBLIC_PATH as string, path)
+const { UMI_APP_TOKEN_KEY = '', UMI_APP_PUBLIC_PATH = '' } = process.env
+const withPublicPath = (path: string): string => join(UMI_APP_PUBLIC_PATH, path)
 
 export default defineConfig({
   define: {
-    UMI_APP_TOKEN_KEY: process.env.UMI_APP_TOKEN_KEY,
-    UMI_APP_PUBLIC_PATH: process.env.UMI_APP_PUBLIC_PATH
+    UMI_APP_TOKEN_KEY,
+    UMI_APP_PUBLIC_PATH
   },
-  base: process.env.UMI_APP_PUBLIC_PATH,
-  publicPath: process.env.UMI_APP_PUBLIC_PATH,
+  base: UMI_APP_PUBLIC_PATH,
+  publicPath: UMI_APP_PUBLIC_PATH,
   esbuildMinifyIIFE: true,
   /**
    * @name 开启 hash 模式
@@ -123,7 +124,7 @@ export default defineConfig({
   headScripts: [
     // 解决首次加载时白屏的问题
     { src: withPublicPath('/scripts/loading.js'), async: true },
-    { src: withPublicPath('/iconfont.js'), async: true },
+    { src: withPublicPath('/iconfont.js'), async: true }
   ],
   //================ pro 插件配置 =================
   presets: ['umi-presets-pro'],
