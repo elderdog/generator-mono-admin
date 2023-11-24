@@ -17,7 +17,7 @@ Yeoman generator for a monorepo project which contains an `Ant Design Pro` app i
 ## Installation
 
 ```shell
-npm install -g yo
+npm install -g yo generator-mono-admin
 ```
 
 ### Generate
