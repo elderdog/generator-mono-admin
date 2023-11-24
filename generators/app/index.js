@@ -99,21 +99,26 @@ module.exports = class extends Generator {
   writing() {
     this.log('\nWriting...\n')
     // 拷贝文件
-    this.fs.copy(this.templatePath('.editorconfig'), this.destinationPath('.editorconfig'))
-    this.fs.copy(this.templatePath('.env'), this.destinationPath('.env'))
-    this.fs.copy(this.templatePath('.eslintrc.js'), this.destinationPath('.eslintrc.js'))
-    this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'))
-    this.fs.copy(this.templatePath('.umirc.ts'), this.destinationPath('.umirc.ts'))
+    // 命名.开头的文件在npm pack时可能会被忽略，所以在模板中把文件名的.去掉，拷贝时重命名
+    this.fs.copy(this.templatePath('editorconfig'), this.destinationPath('.editorconfig'))
+    this.fs.copy(this.templatePath('env'), this.destinationPath('.env'))
+    this.fs.copy(this.templatePath('eslintrc.js'), this.destinationPath('.eslintrc.js'))
+    this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'))
+    this.fs.copy(this.templatePath('umirc.ts'), this.destinationPath('.umirc.ts'))
     this.fs.copy(this.templatePath('pnpm-workspace.yaml'), this.destinationPath('pnpm-workspace.yaml'))
     this.fs.copy(this.templatePath('tsconfig.json'), this.destinationPath('tsconfig.json'))
     this.fs.copyTpl(this.templatePath('package.json.vm'), this.destinationPath('package.json'), this.answer)
     this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.answer)
     // 拷贝目录
-    this.fs.copy(this.templatePath('.vscode'), this.destinationPath('.vscode'))
+    this.fs.copy(this.templatePath('vscode'), this.destinationPath('.vscode'))
     this.fs.copy(this.templatePath('components'), this.destinationPath('components'))
     this.fs.copy(this.templatePath('hooks'), this.destinationPath('hooks'))
-    this.fs.copy(this.templatePath('packages'), this.destinationPath('packages'))
     this.fs.copy(this.templatePath('utils'), this.destinationPath('utils'))
+    this.fs.copy(this.templatePath('packages'), this.destinationPath('packages'))
+    // packages下命名.开头的文件重命名
+    this.fs.move(this.destinationPath('packages/admin/eslintignore'), this.destinationPath('packages/admin/.eslintignore'))
+    this.fs.move(this.destinationPath('packages/admin/eslintrc.js'), this.destinationPath('packages/admin/.eslintrc.js'))
+    this.fs.move(this.destinationPath('packages/admin/gitignore'), this.destinationPath('packages/admin/.gitignore'))
   }
 
   end() {
