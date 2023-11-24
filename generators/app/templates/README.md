@@ -75,3 +75,5 @@
 - 在 `menu` 和 `layout` 以外，比如登录页面，没法使用 `iconfont`
 
 于是把 `iconfont.js（可以是在线资源）` 的加载写在了 `config.ts` 的 `headScripts` 中，其他地方不配置
+
+Copyright (c) <%= answers.year %> <%= answers.author %>
